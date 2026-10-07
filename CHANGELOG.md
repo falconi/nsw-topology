@@ -4,7 +4,7 @@
 
 ## [2.4.0] — 2026-10-07
 
-- **Grafana 13.x support** — updated `@grafana/*` dependencies to v13.0.0+
+- **Grafana 13.x support** — updated `@grafana/*` dependencies to v13.0.0+ and React to v19.0.0
 - Fixes `ReactCurrentOwner` error when loading the plugin on Grafana 13.2.3+
 
 ## [2.3.0] — 2026-09-15
