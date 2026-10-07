@@ -4,8 +4,7 @@
 
 ## [2.4.0] — 2026-10-07
 
-- **Grafana 13.x support** — updated `@grafana/*` dependencies to v13.0.0+ and React to v19.0.0
-- Fixes `ReactCurrentOwner` error when loading the plugin on Grafana 13.2.3+
+- **Grafana 13.x support** — fixes `Cannot read properties of undefined (reading 'ReactCurrentOwner')` when loading the plugin on Grafana 13 (React 19). The bundle used to embed React 18's `react/jsx-runtime`; it now uses a small shim built on the host's own `React.createElement`, so one build works on Grafana 10 through 13.
 
 ## [2.3.0] — 2026-09-15
 

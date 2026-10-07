@@ -22,8 +22,9 @@ import { getCPConfigVersion, getEntries, getPackageJson, getPluginJson, hasReadm
 import { externals } from '../bundler/externals.ts';
 import { copyFilePatterns } from '../bundler/copyFiles.ts';
 
-// [PATCH] Grafana 12.3.1 nao expoe 'react/jsx-runtime' no import map do SystemJS.
-// Removemos da lista de externals para que o webpack o empacote no bundle.
+// [PATCH] Grafana nao expoe 'react/jsx-runtime' no import map do SystemJS.
+// Removemos da lista de externals para que o webpack o empacote no bundle; o alias em
+// resolve.alias aponta para src/jsxRuntimeShim.ts (agnostico de versao do React).
 const patchedExternals = (Array.isArray(externals) ? externals : [externals]).filter(
   (item) => !(typeof item === 'string' && item.startsWith('react/jsx'))
 );
@@ -223,6 +224,11 @@ const config = async (env: Env): Promise<Configuration> => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       // handle resolving "rootDir" paths
       modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
+      // [PATCH] see src/jsxRuntimeShim.ts: bundle a React-version-agnostic jsx runtime
+      alias: {
+        'react/jsx-runtime': path.resolve(process.cwd(), SOURCE_DIR, 'jsxRuntimeShim.ts'),
+        'react/jsx-dev-runtime': path.resolve(process.cwd(), SOURCE_DIR, 'jsxRuntimeShim.ts'),
+      },
       unsafeCache: true,
     },
   };

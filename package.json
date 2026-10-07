@@ -55,14 +55,14 @@
   },
   "dependencies": {
     "@emotion/css": "11.10.6",
-    "@grafana/data": "^13.0.0",
-    "@grafana/i18n": "^13.0.0",
-    "@grafana/runtime": "^13.0.0",
-    "@grafana/schema": "^13.0.0",
-    "@grafana/ui": "^13.0.0",
+    "@grafana/data": "^12.3.0",
+    "@grafana/i18n": "^12.3.0",
+    "@grafana/runtime": "^12.3.0",
+    "@grafana/schema": "^12.3.0",
+    "@grafana/ui": "^12.3.0",
     "@xyflow/react": "^12.6.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
   },
   "packageManager": "npm@10.8.2",
   "overrides": {
