@@ -13,17 +13,18 @@ import React from 'react';
 type Props = Record<string, unknown> & { children?: unknown };
 
 const make = (type: React.ElementType, props: Props | null, key: unknown, spreadChildren: boolean) => {
-  const { children, ...rest } = props || {};
+  const { children, ...rest } = (props || {}) as Props;
   if (key !== undefined) {
     rest.key = key;
   }
   if (children === undefined) {
     return React.createElement(type, rest);
   }
-  if (spreadChildren && Array.isArray(children)) {
-    return React.createElement(type, rest, ...children);
+  const kids = children as React.ReactNode;
+  if (spreadChildren && Array.isArray(kids)) {
+    return React.createElement(type, rest, ...(kids as React.ReactNode[]));
   }
-  return React.createElement(type, rest, children);
+  return React.createElement(type, rest, kids);
 };
 
 export const Fragment = React.Fragment;
