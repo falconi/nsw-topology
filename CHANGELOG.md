@@ -2,6 +2,11 @@
 
 > 🇧🇷 [Leia em Português](CHANGELOG-pt.md)
 
+## [2.4.0] — 2026-10-07
+
+- **Grafana 13.x support** — updated `@grafana/*` dependencies to v13.0.0+
+- Fixes `ReactCurrentOwner` error when loading the plugin on Grafana 13.2.3+
+
 ## [2.3.0] — 2026-09-15
 
 - New built-in icons: `vpn`, `vnet` and `connection`
